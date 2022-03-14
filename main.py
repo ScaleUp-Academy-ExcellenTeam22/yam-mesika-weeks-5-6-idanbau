@@ -1,3 +1,6 @@
-import ex1
 
-print(ex1.deep_files(r"C:\Users\idanb\Downloads\Notebooks-master\Notebooks-master\week05\images"))
+
+import ex2
+
+if ex2.getRandomDate(ex2.read_date(), ex2.read_date()).isoweekday() == 1:
+    print("אין לי ויניגרט!")
