@@ -3,34 +3,51 @@ import re
 import datetime
 import random
 
-# match pattern to check for files in
-MATCH_PATTERN: str = "deep"
+# Match pattern to check for all files with deep on it.
+FILES_DEEP_PATTERN: str = "deep"
 
 
-def deep_files(path: str):
+def show_files_by_pattern(system_path: str, match_pattern: str):
     """
-    :param path: the current path we'd like to check
-    :return: the files that accept the rule in the pattern
+    Function with receive system path and pattern and returns a
+    list of files with includes the pattern in its own name.
+    :param match_pattern: Our wanted pattern to check for files name
+    :param system_path: The current path to check for pattern files
+    :return: The files list that accept the rule in the pattern
     """
-    return [f for f in os.listdir(path) if re.search(MATCH_PATTERN, f)]
+    return [f for f in os.listdir(system_path) if re.search(match_pattern, f)]
 
 
-INPUT_PATTERN = "Please enter date in YYYY-MM-DD:"
+INPUT_DATE_MESSAGE = "Please enter date in YYYY-MM-DD:"
 
 
-def read_date() -> datetime.datetime:
+def read_date(input_message: str) -> datetime.datetime:
     """
-    :return: date object of YYYY-MM-INPUT_
+    Function to read date
+    :param input_message: Message to console about the input data
+    :return: date object of YYYY-MM-DD pattern date
     """
-    return datetime.datetime.fromisoformat(input(INPUT_PATTERN))
+    return datetime.datetime.fromisoformat(input(input_message))
 
 
-def getRandomDate(first_date: datetime.datetime, second_date: datetime.datetime) -> datetime.date:
+def get_random_date(first_date: datetime.datetime, second_date: datetime.datetime) -> datetime.date:
     """
-
     :param first_date:first date as lower bound date
     :param second_date:second date as higher bound date
     :return: a random date between the two.
     """
     second_difference = int(second_date.timestamp() - first_date.timestamp())
     return datetime.date.fromtimestamp(first_date.timestamp() + random.randint(0, second_difference))
+
+
+MONDAY_MESSAGE = "אין לי ויניגרט"
+
+
+def check_if_monday(date: datetime.datetime.date, message: str):
+    """
+    Function to check if monday and if yes output a message
+    :param date: Current date to check for it
+    :param message: Output message if current date is monday
+    """
+    if date.isoweekday() == 1:
+        print(message)
