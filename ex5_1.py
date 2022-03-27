@@ -23,7 +23,7 @@ def show_files_by_pattern(system_path: str, match_pattern: str):
 def read_date(input_message: str) -> datetime.datetime:
     """
     Read date from the user in YYYY-MM-DD format
-    :param input_message: Message to console about the input data
+    :param input_message: The message that would be printed to the user, asking for the input data
     :return: date object of YYYY-MM-DD pattern date
     """
     return datetime.datetime.fromisoformat(input(input_message))
