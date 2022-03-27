@@ -1,10 +1,10 @@
+import itertools
 from typing import Iterable
 
 
 def interleave(*iterables: Iterable):
     """
-    This function receive a list of iterables and returns a generator of each iterable item
-    it removes each iterable that went to his end.
+    This function receive a list of iterables and returns a generator list of each iterable item.
     :param iterables: A list of iterables to walk through
     """
     current_iterables_iterators = [iter(iterator) for iterator in iterables]

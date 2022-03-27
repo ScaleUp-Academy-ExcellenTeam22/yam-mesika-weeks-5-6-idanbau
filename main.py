@@ -2,6 +2,8 @@ import ex5_1
 import ex5_2
 import ex5_3
 import ex5_4
+
+
 if __name__ == "__main__":
     ex5_1.show_files_by_pattern(r"c:\\", ex5_1.FILES_DEEP_PATTERN)
     ex5_1.check_if_monday(ex5_1.get_random_date(ex5_1.read_date(ex5_1.INPUT_DATE_MESSAGE),

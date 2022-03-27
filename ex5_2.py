@@ -1,11 +1,11 @@
 def join(*lists: list, seperator: str = '-'):
     """
-    Function that receive unlimited lists and combine them with seperator between each other.
+    A function that receive unlimited lists and combine them with seperator between each other.
     :param lists: Unlimited list to combine
     :param seperator: Seperator between each list
     :return: Return the list with seperator in the end (without the last character)
     """
-    return [cell for curr_list in lists for cell in curr_list + [seperator]][:-1]
+    return [list_cell for curr_list in lists for list_cell in curr_list + [seperator]][:-1]
 
 
 def get_recipe_price(ingredients_prices: dict, optionals: list = (), **ingredients_quantity: int):

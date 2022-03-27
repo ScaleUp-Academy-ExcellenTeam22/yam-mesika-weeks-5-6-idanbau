@@ -5,6 +5,8 @@ import random
 
 # Match pattern to check for all files with deep on it.
 FILES_DEEP_PATTERN: str = "deep"
+INPUT_DATE_MESSAGE = "Please enter date in YYYY-MM-DD:"
+MONDAY_MESSAGE = "אין לי ויניגרט"
 
 
 def show_files_by_pattern(system_path: str, match_pattern: str):
@@ -15,15 +17,12 @@ def show_files_by_pattern(system_path: str, match_pattern: str):
     :param system_path: The current path to check for pattern files
     :return: The files list that accept the rule in the pattern
     """
-    return [f for f in os.listdir(system_path) if re.search(match_pattern, f)]
-
-
-INPUT_DATE_MESSAGE = "Please enter date in YYYY-MM-DD:"
+    return [file for file in os.listdir(system_path) if os.path.isfile(file) and re.search(match_pattern, file)]
 
 
 def read_date(input_message: str) -> datetime.datetime:
     """
-    Function to read date
+    Read date from the user in YYYY-MM-DD format
     :param input_message: Message to console about the input data
     :return: date object of YYYY-MM-DD pattern date
     """
@@ -38,9 +37,6 @@ def get_random_date(first_date: datetime.datetime, second_date: datetime.datetim
     """
     second_difference = int(second_date.timestamp() - first_date.timestamp())
     return datetime.date.fromtimestamp(first_date.timestamp() + random.randint(0, second_difference))
-
-
-MONDAY_MESSAGE = "אין לי ויניגרט"
 
 
 def check_if_monday(date: datetime.datetime.date, message: str):
